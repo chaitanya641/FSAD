@@ -1,0 +1,35 @@
+body {
+font-family: 'Times New Roman', Times, serif;
+margin: 0;
+background: linear-gradient(to right, whitesmoke, orange);
+}
+header {
+background: #333;
+color: white;
+padding: 15px;
+display: flex;
+justify-content: space-between;
+}
+nav a {
+color: white;
+margin: 10px;
+text-decoration: none;
+}
+section {
+padding: 40px;
+}
+.card {
+background: lightgray;
+padding: 20px;
+margin: 10px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: red;
+    border: none;
+    color:pink;
+    cursor: pointer;
+    border-radius: 5px;
+}
