@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+      outline: none;
+    }
+
+    .highlight {
+      border: 2px solid #007BFF;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    button {
+      background: #007BFF;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+  <script>
+    // Validation function
+    function validateInput(event) {
+      let char = event.key;
+      if (!/^[a-zA-Z ]$/.test(char)) {
+        event.preventDefault();
+        showError("nameError", "Only letters and spaces are allowed.");
+      } else {
+        hideError("nameError");
+      }
+    }
+
+    // Show error message
+    function showError(id, message) {
+      const errorElement = document.getElementById(id);
+      errorElement.textContent = message;
+      errorElement.style.display = "block";
+    }
+
+    // Hide error message
+    function hideError(id) {
+      const errorElement = document.getElementById(id);
+      errorElement.style.display = "none";
+    }
+
+    // Highlight on hover
+    function highlightField(element) {
+      element.classList.add("highlight");
+    }
+
+    function removeHighlight(element) {
+      element.classList.remove("highlight");
+    }
+
+    // Double-click submit confirmation
+    function submitForm() {
+      alert("✅ Feedback submitted successfully!");
+    }
+  </script>
+</head>
+<body>
+  <h2>Customer Feedback Form</h2>
+  <form>
+    <!-- Name field -->
+    <label for="name">Name:</label>
+    <input type="text" id="name"
+           onkeypress="validateInput(event)"
+           onmouseover="highlightField(this)"
+           onmouseout="removeHighlight(this)">
+    <div id="nameError" class="error-message"></div>
+
+    <!-- Feedback field -->
+    <label for="feedback">Feedback:</label>
+    <textarea id="feedback"
+              rows="5"
+              onmouseover="highlightField(this)"
+              onmouseout="removeHighlight(this)"></textarea>
+
+    <!-- Submit button -->
+    <button type="button" ondblclick="submitForm()">
+      Submit (Double Click)
+    </button>
+  </form>
+</body>
+</html>
